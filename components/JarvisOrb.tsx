@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createOrbScene, type OrbSceneApi } from "@/lib/orbScene";
 import { HandTracker, type TrackerStatus } from "@/lib/handTracker";
+import UltronChat from "@/components/UltronChat";
 
 type CameraState = "off" | "starting" | "on" | "error";
 
@@ -173,6 +174,8 @@ export default function JarvisOrb() {
           </button>
         </div>
       </div>
+
+      <UltronChat />
     </>
   );
 }
