@@ -65,10 +65,12 @@ export default function JarvisOrb() {
       trackerRef.current = null;
       tracker.stop();
       setCamera("error");
+      const name = err instanceof Error ? err.name : "Unknown";
+      const detail = err instanceof Error ? err.message : String(err);
       setError(
-        err instanceof DOMException && err.name === "NotAllowedError"
-          ? "CAMERA ACCESS DENIED"
-          : "TRACKING INIT FAILED",
+        name === "NotAllowedError"
+          ? `CAMERA ACCESS DENIED (${detail})`
+          : `TRACKING INIT FAILED [${name}] ${detail}`.slice(0, 220),
       );
     }
   }, []);
